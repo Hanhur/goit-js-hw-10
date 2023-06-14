@@ -1,41 +1,22 @@
-import Notiflix from 'notiflix';
-
-export function fetchBreeds(errorEl) 
+const MY_KEY = 'live_lTYzNRJn2voREt0ld5zii1Z9q7DuxyDIG9AVAbJecJ9iBwnOQrUjds4HNL1Bxowb';
+export function fetchBreeds() 
 {
-    let urlBreeds = 'https://api.thecatapi.com/v1/breeds';
-    return fetch(urlBreeds).then(response => {
+    return fetch("https://api.thecatapi.com/v1/breeds").then((response) => {
         if (!response.ok) 
         {
-          throw new Error(response.status);
+            throw new Error(response.status);
         }
         return response.json();
-    }).catch(error => Notiflix.Notify.failure(errorEl.textContent));
+    })
 };
 
-function urlConstructor(breedId) 
+export function fetchCatBreeds(id) 
 {
-    const urlApi = 'https://api.thecatapi.com/v1/images/search?';
-    const apiKey = 'live_PCN9VbUPCUrU8EehKv0gqDLS17WCHC8m3QIPHdGYhFKGPuCHQeigil0oEiTEFWRE';
-    const searchParams = new URLSearchParams({
-        breed_ids: breedId,
-        api_key: apiKey,
-    });
-    return urlApi + searchParams.toString();
-}
-
-export function fetchCatByBreed(breedId, errorEl, loaderEl, loaderS, selectEl) 
-{
-    const urlBreed = urlConstructor(breedId);
-    return fetch(urlBreed).then(response => {
+    return fetch(`https://api.thecatapi.com/v1/images/search?&breed_ids=${id}&api_key=${MY_KEY}`).then(response => {
         if (!response.ok) 
         {
-          throw new Error(response.status);  
+            throw new Error(response.status);
         }
         return response.json();
-    }).catch(error => {
-        Notiflix.Notify.failure(errorEl.textContent);
-        loaderS.style.display = 'none';
-        loaderEl.style.display = 'none';
-        selectEl.style.display = 'block';
     })
-}
+};
