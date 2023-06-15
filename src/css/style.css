@@ -1,5 +1,5 @@
 .loader {
-    color: black;
+    color: #ce95d2;
     font-size: 10px;
     width: 1em;
     height: 1em;
@@ -70,4 +70,17 @@
             3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
             -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
     }
+}
+body 
+{
+    background-color: #555555;
+}
+.cat-item,
+.cat-temperament
+{
+    color: #8bc;
+}
+.cat-description, p
+{
+    color: #8db851;
 }
